@@ -78,7 +78,7 @@ def getYesterday():
 
 def main():
 	newT = getRanking(1, 6).reset_index().astype(str)
-	oldT = pd.read_csv('/home/weiss/Documentos/Python/HTML_Scrapping/Saves/rankUDESC_' + getYesterday() + '.csv').astype(str)
+	oldT = pd.read_csv('Saves/rankUDESC_' + getYesterday() + '.csv').astype(str)
 	printTable(newT, oldT)	
 
 if __name__ == "__main__":
