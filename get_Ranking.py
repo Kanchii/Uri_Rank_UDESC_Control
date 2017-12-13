@@ -30,7 +30,7 @@ def getRanking(first, last):
 def main():
 	newT = getRanking(1, 6).reset_index()
 	data = time.strftime("%Y%m%d")
-	newT.to_csv('/home/weiss/Documentos/Python/HTML_Scrapping/Saves/rankUDESC_' + data + 't.csv', index = False)
+	newT.to_csv('/home/weiss/Documentos/Python/HTML_Scrapping/Saves/rankUDESC_' + data + '.csv', index = False)
 
 if __name__ == "__main__":
 	main()

@@ -4,6 +4,8 @@ import requests
 from tabulate import tabulate
 import time
 from datetime import datetime, timedelta
+import sys
+import os.path
 
 '''
 	Autor: Felipe Weiss
@@ -72,13 +74,23 @@ def getRanking(first, last):
 	rankAtual['Resolvido'] = rankAtual['Resolvido'].astype(str).map(lambda x : ajuste(x))
 	return rankAtual
 
-def getYesterday():
-	yesterday = datetime.now() - timedelta(days=1)	
-	return yesterday.strftime('%Y%m%d')
+def getDate(num_days):
+	date = datetime.now() - timedelta(days=num_days)	
+	return date.strftime('%Y%m%d')
 
 def main():
+	qtd = 1
+	if(len(sys.argv) > 1):
+		qtd = int(sys.argv[1])
 	newT = getRanking(1, 6).reset_index().astype(str)
-	oldT = pd.read_csv('Saves/rankUDESC_' + getYesterday() + '.csv').astype(str)
+	filename = 'Saves/rankUDESC_' + getDate(qtd) + '.csv'
+	if(os.path.exists(filename)):
+		oldT = pd.read_csv(filename).astype(str)
+	else:
+		print("Nao temos salvo os dados desta dada. Estaremos usando a de ontem")
+		oldT = pd.read_csv('Saves/rankUDESC_' + getDate(1) + '.csv').astype(str)
+
+	
 	printTable(newT, oldT)	
 
 if __name__ == "__main__":

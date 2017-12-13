@@ -1,1 +1,1 @@
-python3 /home/weiss/Documentos/Python/HTML_Scrapping/get_Ranking.py
+python3 get_Ranking.py
