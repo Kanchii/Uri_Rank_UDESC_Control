@@ -66,48 +66,54 @@ def format_date(x, pos = None):
 	return dates[ind]
 
 def main():
+	global dates
+
 	if(len(sys.argv) == 2 and sys.argv[1] == '-h'):
-		print("Parametros:\n\t1 -> periodo_de_abrangencia_partindo_do_dia_corrente\n\t2 -> nome_do_usuario")
+		print("Parametros:\n\t1 -> dado_requerido (Default = Exercicios resolvidos)\t2 -> periodo_de_abrangencia_partindo_do_dia_corrente\n\t3 -> nome_do_usuario")
 	elif(len(sys.argv) < 3):
 		print("Numero de parametros incorreto")
-	else:
+		return
+	if(len(sys.argv) == 3):
+		campo = "Resolvido"
 		time = int(sys.argv[1])
 		name = ' '.join(sys.argv[2:])
-		att = time
-		res = []
-		#dates = []
-		global dates
-		while(True):
-			filename = "Saves/rankUDESC_" + getDate(att) + ".csv"
-			if(os.path.exists(filename)):
-				dates.append(fixDate(getDate(att)))
-				temp = pd.read_csv(filename)
-				pos = searchUser(name, temp)
-				if(pos > -1):
-					res.append(temp.Resolvido[pos])
-				else:
-					res.append(None)
-			att -= 1
-			if(att == 0):
-				dates.append(fixDate(getDate()))
-				temp = getRanking(1, 6).reset_index()
-				realName = getRealName(name, temp)
-				pos = searchUser(name, temp)
-				if(pos > -1):
-					res.append(int(temp.Resolvido[pos]))
-				else:
-					res.append(None)
-				break
-		fig, axes = plt.subplots(ncols=1, figsize=(8, 6))
-		ax = axes
-		ind = np.arange(len(dates))
-		ax.plot(ind, res, 'r')
-		ax.set_title(realName)
-		ax.xaxis.set_major_formatter(ticker.FuncFormatter(format_date))
-		fig.autofmt_xdate()
-		plt.xlabel('Data')
-		plt.ylabel('Exercicios resolvidos')
-		plt.show()
+	else:
+		campo = sys.argv[1]
+		time = int(sys.argv[2])
+		name = ' '.join(sys.argv[3:])
+	att = time
+	res = []
+	while(True):
+		filename = "Saves/rankUDESC_" + getDate(att) + ".csv"
+		if(os.path.exists(filename)):
+			dates.append(fixDate(getDate(att)))
+			temp = pd.read_csv(filename)
+			pos = searchUser(name, temp)
+			if(pos > -1):
+				res.append(temp[campo][pos])
+			else:
+				res.append(None)
+		att -= 1
+		if(att == 0):
+			dates.append(fixDate(getDate()))
+			temp = getRanking(1, 6).reset_index()
+			realName = getRealName(name, temp)
+			pos = searchUser(name, temp)
+			if(pos > -1):
+				res.append(int(temp[campo][pos]))
+			else:
+				res.append(None)
+			break
+	fig, axes = plt.subplots(ncols=1, figsize=(8, 6))
+	ax = axes
+	ind = np.arange(len(dates))
+	ax.plot(ind, res, 'r')
+	ax.set_title(realName)
+	ax.xaxis.set_major_formatter(ticker.FuncFormatter(format_date))
+	fig.autofmt_xdate()
+	plt.xlabel('Data')
+	plt.ylabel('Exercicios resolvidos')
+	plt.show()
 
 if __name__ == "__main__":
 	main()

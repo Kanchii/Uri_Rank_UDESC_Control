@@ -87,10 +87,10 @@ def main():
 	if(os.path.exists(filename)):
 		oldT = pd.read_csv(filename).astype(str)
 	else:
-		print("Nao temos salvo os dados desta dada. Estaremos usando a de ontem")
-		oldT = pd.read_csv('Saves/rankUDESC_' + getDate(1) + '.csv').astype(str)
-
-	
+		while(qtd > 0 and not os.path.exists(filename)):
+			qtd -= 1
+			filename = 'Saves/rankUDESC_' + getDate(qtd) + '.csv'
+		oldT = pd.read_csv(filename).astype(str)
 	printTable(newT, oldT)	
 
 if __name__ == "__main__":
