@@ -6,6 +6,8 @@ import time
 from datetime import datetime, timedelta
 import sys
 import os.path
+import asyncio
+import concurrent.futures
 
 '''
 	Autor: Felipe Weiss
@@ -15,6 +17,8 @@ import os.path
 '''
 
 columns = ['Ranking', 'Usuário', 'Resolvido']
+first, last = 1, 6
+urls = ['https://www.urionlinejudge.com.br/judge/pt/users/university/udesc?page=' + str(i) for i in range(first, last + 1)]
 tabulate.WIDE_CHARS_MODE = True
 
 def searchUser(user, table):
@@ -59,18 +63,26 @@ def printTable(newT, oldT):
 				aux.at[i, 'Usuário'] = aux.at[i, 'Usuário'] + ' (NOVO)'	
 	print(tabulate(aux[columns], headers = "keys", tablefmt = 'fancy_grid', numalign = "left"))
 
-def getRanking(first, last):
-	rankAtual = -1
-	first = True
-	for i in range(first, last + 1):
-		url = 'https://www.urionlinejudge.com.br/judge/pt/users/university/udesc?page=' + str(i)
-		html = requests.get(url).content
-		if(first):
-			rankAtual = pd.read_html(html)[-1]
-			first = False
-		else:
-			aux = pd.read_html(html)[-1]
-			rankAtual = rankAtual.append(aux)
+async def getRanking():	
+	global columns
+
+	with concurrent.futures.ThreadPoolExecutor(max_workers = 20) as executor:
+		loop = asyncio.get_event_loop()
+		futures = [
+			loop.run_in_executor(
+			executor, requests.get, 'https://www.urionlinejudge.com.br/judge/pt/users/university/udesc?page=' + str(i)
+			)
+			for i in range(1, 7)
+		]
+		ff = True
+		rankAtual = []
+		for r in await asyncio.gather(*futures):
+			aux = pd.read_html(r.content)[-1]
+			if(ff):
+				ff = False
+				rankAtual = aux
+			else:
+				rankAtual = rankAtual.append(aux)
 	rankAtual['Resolvido'] = rankAtual['Resolvido'].astype(str).map(lambda x : ajuste(x))
 	return rankAtual
 
@@ -79,19 +91,23 @@ def getDate(num_days):
 	return date.strftime('%Y%m%d')
 
 def main():
+	ss = time.time()
 	qtd = 1
 	if(len(sys.argv) > 1):
 		qtd = int(sys.argv[1])
-	newT = getRanking(1, 6).reset_index().astype(str)
-	filename = 'Saves/rankUDESC_' + getDate(qtd) + '.csv'
+	loop = asyncio.get_event_loop()
+	newT = loop.run_until_complete(getRanking()).reset_index().astype(str)
+	filename = '../Saves/rankUDESC_' + getDate(qtd) + '.csv'
 	if(os.path.exists(filename)):
 		oldT = pd.read_csv(filename).astype(str)
 	else:
 		while(qtd > 0 and not os.path.exists(filename)):
 			qtd -= 1
-			filename = 'Saves/rankUDESC_' + getDate(qtd) + '.csv'
+			filename = '../Saves/rankUDESC_' + getDate(qtd) + '.csv'
 		oldT = pd.read_csv(filename).astype(str)
-	printTable(newT, oldT)	
+	printTable(newT, oldT)
+	print("Tempo: {0:.4f}s".format(time.time() - ss))
+
 
 if __name__ == "__main__":
 	main()

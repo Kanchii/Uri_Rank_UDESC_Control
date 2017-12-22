@@ -66,76 +66,49 @@ def format_date(x, pos = None):
 	return dates[ind]
 
 def main():
-	#Global variables
 	global dates
 
-	args = sys.argv
-	qtd = 10
-	campo = 'Resolvido'
-	if('-h' in args):
-		print("Argumentos aceitos:\n-d: Quantidade de dias a ser considerado a partir do dia atual (Default = 10)\n\
-			                        -c: Nome dos usuarios que se quer ver os dados (Se for + que 1 usuario, separar por \'+\'")
+	if(len(sys.argv) == 2 and sys.argv[1] == '-h'):
+		print("Parametros:\n\t1 -> dado_requerido (Default = Exercicios resolvidos)\t2 -> periodo_de_abrangencia_partindo_do_dia_corrente\n\t3 -> nome_do_usuario")
+	elif(len(sys.argv) < 3):
+		print("Numero de parametros incorreto")
 		return
-	if('-d' in args):
-		qtd = int(args[args.index('-d') + 1])
-	all_users = args[args.index('-c') + 1:]
-	if('-d' in all_users):
-		all_users = all_users[:(all_users.index('-d'))]
-	all_users = ' '.join(all_users).replace(' +', '+').replace('+ ', '+').split('+')
-	att = qtd
-	usu_dates = []
-	real_names = []
-	first = 1
-	while(att > 0):
-		filename = "Saves/rankUDESC_" + getDate(att) + ".csv"
+	if(len(sys.argv) == 3):
+		campo = "Resolvido"
+		time = int(sys.argv[1])
+		name = ' '.join(sys.argv[2:])
+	else:
+		campo = sys.argv[1]
+		time = int(sys.argv[2])
+		name = ' '.join(sys.argv[3:])
+	att = time
+	res = []
+	while(True):
+		filename = "../Saves/rankUDESC_" + getDate(att) + ".csv"
 		if(os.path.exists(filename)):
 			dates.append(fixDate(getDate(att)))
 			temp = pd.read_csv(filename)
-			for idx, u in enumerate(all_users):
-				pos = searchUser(u, temp)
-				realName = getRealName(u, temp)
-				if(pos > -1):
-					if(first):
-						usu_dates.append([temp[campo][pos]])
-						real_names.append(realName)
-					else:
-						usu_dates[idx].append(temp[campo][pos])
-						real_names[idx] = realName
-				else:
-					if(first):
-						usu_dates.append([None])
-						real_names.append('.')
-					else:
-						usu_dates[idx].append(None)
-			if(first):
-				first = 0
+			pos = searchUser(name, temp)
+			if(pos > -1):
+				res.append(temp[campo][pos])
+			else:
+				res.append(None)
 		att -= 1
 		if(att == 0):
 			dates.append(fixDate(getDate()))
 			temp = getRanking(1, 6).reset_index()
-			for idx, u in enumerate(all_users):
-				pos = searchUser(u, temp)
-				realName = getRealName(u, temp)
-				if(pos > -1):
-					if(first):
-						usu_dates.append([int(temp[campo][pos])])
-						real_names.append(realName)
-					else:
-						usu_dates[idx].append(int(temp[campo][pos]))
-						real_names[idx] = realName
-				else:
-					if(first):
-						usu_dates.append([None])
-						real_names.append('.')
-					else:
-						usu_dates[idx].append(None)
-	fig, axes = plt.subplots(ncols=1, figsize=(12, 12))
+			realName = getRealName(name, temp)
+			pos = searchUser(name, temp)
+			if(pos > -1):
+				res.append(int(temp[campo][pos]))
+			else:
+				res.append(None)
+			break
+	fig, axes = plt.subplots(ncols=1, figsize=(8, 6))
 	ax = axes
 	ind = np.arange(len(dates))
-	for idx, u in enumerate(real_names):
-		ax.plot(ind, usu_dates[idx], label = u)
-
-	ax.legend(loc='best', ncol=1, fancybox = True, shadow = True)
+	ax.plot(ind, res, 'r')
+	ax.set_title(realName)
 	ax.xaxis.set_major_formatter(ticker.FuncFormatter(format_date))
 	fig.autofmt_xdate()
 	plt.xlabel('Data')
