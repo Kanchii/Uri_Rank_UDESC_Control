@@ -41,7 +41,7 @@ def main():
 	loop = asyncio.get_event_loop()
 	newT = loop.run_until_complete(getRanking()).reset_index().astype(str)
 	data = time.strftime("%Y%m%d")
-	newT.to_csv('../Saves/rankUDESC_' + data + 't.csv', index = False)
+	newT.to_csv('../Saves/rankUDESC_' + data + '.csv', index = False)
 
 if __name__ == "__main__":
 	main()

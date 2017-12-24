@@ -76,6 +76,7 @@ def format_date(x, pos = None):
 	return dates[ind]
 
 def main():
+	ss = time.time()
 	#Global variables
 	global dates
 
@@ -151,6 +152,7 @@ def main():
 	fig.autofmt_xdate()
 	plt.xlabel('Data')
 	plt.ylabel('Exercicios resolvidos')
+	print('Tempo: {0:.2f}'.format(time.time() - ss))
 	plt.show()
 
 if __name__ == "__main__":
