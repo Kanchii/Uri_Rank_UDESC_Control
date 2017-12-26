@@ -11,19 +11,21 @@ import concurrent.futures
 		Este programa pega o rank (até a sexta página) da UDESC no UriOnlineJudge e salva os dados em um arquivo csv
 '''
 
+first, last = 1, 6
+
 def ajuste(x):
 	return (x.replace('.', '') if not x.endswith('.0') else x.replace('.0', ''))
 
 async def getRanking():
-	global columns
+	global columns, first, last
 
-	with concurrent.futures.ThreadPoolExecutor(max_workers = 20) as executor:
+	with concurrent.futures.ThreadPoolExecutor(max_workers = (last - first + 1)) as executor:
 		loop = asyncio.get_event_loop()
 		futures = [
 			loop.run_in_executor(
 			executor, requests.get, 'https://www.urionlinejudge.com.br/judge/pt/users/university/udesc?page=' + str(i)
 			)
-			for i in range(1, 7)
+			for i in range(first, last + 1)
 		]
 		ff = True
 		rankAtual = []

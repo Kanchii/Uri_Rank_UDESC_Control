@@ -18,8 +18,7 @@ import concurrent.futures
 
 columns = ['Ranking', 'Usuário', 'Resolvido']
 first, last = 1, 6
-urls = ['https://www.urionlinejudge.com.br/judge/pt/users/university/udesc?page=' + str(i) for i in range(first, last + 1)]
-tabulate.WIDE_CHARS_MODE = True
+#urls = ['https://www.urionlinejudge.com.br/judge/pt/users/university/udesc?page=' + str(i) for i in range(first, last + 1)]
 
 def searchUser(user, table):
 	for idx, name in enumerate(table['Usuário']):
@@ -60,19 +59,19 @@ def printTable(newT, oldT):
 			if(v2 != 0):
 				aux.at[i, 'Ranking'] = aux.at[i, 'Ranking'] + ' (' + ('' if int(v2) < 0 else '+') + str(v2) + ')'
 			if(v3 == 1):
-				aux.at[i, 'Usuário'] = aux.at[i, 'Usuário'] + ' (NOVO)'	
-	print(tabulate(aux[columns], headers = "keys", tablefmt = 'fancy_grid', numalign = "left"))
+				aux.at[i, 'Usuário'] = aux.at[i, 'Usuário'] + ' (NOVO)'
+	print(tabulate(aux[columns], headers = "keys", tablefmt = 'fancy_grid', showindex = "never", numalign = "left"))
 
 async def getRanking():	
-	global columns
+	global columns, first, last
 
-	with concurrent.futures.ThreadPoolExecutor(max_workers = 20) as executor:
+	with concurrent.futures.ThreadPoolExecutor(max_workers = (last - first) + 1) as executor:
 		loop = asyncio.get_event_loop()
 		futures = [
 			loop.run_in_executor(
 			executor, requests.get, 'https://www.urionlinejudge.com.br/judge/pt/users/university/udesc?page=' + str(i)
 			)
-			for i in range(1, 7)
+			for i in range(first, last + 1)
 		]
 		ff = True
 		rankAtual = []
