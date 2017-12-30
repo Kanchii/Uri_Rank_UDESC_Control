@@ -1,3 +1,5 @@
+#! python3
+
 import pandas as pd
 import requests
 import time
@@ -8,7 +10,7 @@ import concurrent.futures
 '''
 	Autor: Felipe Weiss
 	Funcionalidade:
-		Este programa pega o rank (até a sexta página) da UDESC no UriOnlineJudge e salva os dados em um arquivo csv
+		Este programa pega o rank (ate a sexta pagina) da UDESC no UriOnlineJudge e salva os dados em um arquivo csv
 '''
 
 first, last = 1, 6
