@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import pandas as pd
 from copy import deepcopy
 import requests
@@ -65,7 +67,7 @@ def printTable(newT, oldT):
 async def getRanking():	
 	global columns, first, last
 
-	with concurrent.futures.ThreadPoolExecutor(max_workers = (last - first) + 1) as executor:
+	with concurrent.futures.ThreadPoolExecutor(max_workers = 10) as executor:
 		loop = asyncio.get_event_loop()
 		futures = [
 			loop.run_in_executor(
