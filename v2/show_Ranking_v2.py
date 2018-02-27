@@ -105,6 +105,7 @@ def main():
 		while(qtd > 0 and not os.path.exists(filename)):
 			qtd -= 1
 			filename = '../Saves/rankUDESC_' + getDate(qtd) + '.csv'
+		print(filename)
 		oldT = pd.read_csv(filename).astype(str)
 	printTable(newT, oldT)
 	print("Tempo: {0:.4f}s".format(time.time() - ss))
