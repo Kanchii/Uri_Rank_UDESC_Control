@@ -58,7 +58,7 @@ def main():
 	print_ast(80)
 	newT = loop.run_until_complete(getRanking()).reset_index().astype(str)
 	data = time.strftime("%Y%m%d")
-	newT.to_csv('/home/weiss/Documentos/Python/HTML_Scrapping/Saves/rankUDESC_' + data + '.csv', index = False)
+	newT.to_csv('../Saves/rankUDESC_' + data + '.csv', index = False)
 
 if __name__ == "__main__":
 	ss = time.time()
