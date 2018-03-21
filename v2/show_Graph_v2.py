@@ -58,7 +58,7 @@ async def getRanking():
 	return rankAtual
 
 def getDate(num_days = 0):
-	date = datetime.now() - timedelta(days=num_days)	
+	date = datetime.now() - timedelta(days=num_days)
 	return date.strftime('%Y%m%d')
 
 def fixDate(date):
@@ -98,7 +98,7 @@ def main():
 	real_names = []
 	first = 1
 	while(att > 0):
-		filename = "../Saves/rankUDESC_" + getDate(att) + ".csv"
+		filename = '/home/weiss/Documentos/Github/Uri_Rank_Udesc_Control/Saves/rankUDESC_' + getDate(att) + ".csv"
 		if(os.path.exists(filename)):
 			dates.append(fixDate(getDate(att)))
 			temp = pd.read_csv(filename)
