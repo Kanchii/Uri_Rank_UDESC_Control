@@ -1,5 +1,5 @@
 index,Ranking,Unnamed: 1,Usuário,Resolvido,Tentado,Submissões
-0,1,nan,[Traveling Balloonsmen] Weiss,1210,1.215,2.3930000000000002
+0,1,nan,[Traveling Balloonsmen] Weiss,121,1.215,2.3930000000000002
 1,2,nan,Israel Felipe,898,904.0,1.4509999999999998
 2,3,nan,;-;,716,767.0,2.6830000000000003
 3,4,nan,^a+Weiss,585,645.0,2.391
@@ -19,7 +19,7 @@ index,Ranking,Unnamed: 1,Usuário,Resolvido,Tentado,Submissões
 17,18,nan,[MeGA] Gabriela,270,279.0,450.0
 18,19,nan,Carlos Eduardo Cuzik,260,271.0,534.0
 19,20,nan,Lucas Machado Gutierrez,253,265.0,384.0
-20,21,nan,[#teamLovelace] Luiza,251,259.0,337.0
+20,21,nan,[#teamLovelace] Luiza,252,260.0,338.0
 21,22,nan,Raphael Pennacchi,241,243.0,429.0
 22,23,nan,[MTFProg] Peter Brendel,233,238.0,407.0
 23,24,nan,Mateus Boiani,226,229.0,436.0
@@ -35,7 +35,7 @@ index,Ranking,Unnamed: 1,Usuário,Resolvido,Tentado,Submissões
 7,34,nan,Thiago Reichert,178,181.0,283.0
 8,35,nan,Paulo Henrique Tokarski Glinski,166,166.0,333.0
 9,36,nan,Gustavo Daniel,166,168.0,266.0
-10,37,nan,[SADREACT]João Pelizza,163,167.0,424.0
+10,37,nan,[CINFμ]João Pelizza,163,167.0,427.0
 11,38,nan,Marcos Silveira Gonzalez,160,160.0,238.0
 12,39,nan,Marcos Creuz Filho,159,172.0,273.0
 13,40,nan,PLANK - (Edu) Elder Benedet,158,162.0,260.0
@@ -65,8 +65,8 @@ index,Ranking,Unnamed: 1,Usuário,Resolvido,Tentado,Submissões
 11,64,nan,Andressa Mayara Umetsu,122,131.0,321.0
 12,65,nan,Gabriel Rech,120,120.0,197.0
 13,66,nan,Python is Love Python is Life,118,119.0,191.0
-14,67,nan,Lucas Aloísio,115,117.0,264.0
-15,68,nan,Eduardo Polini,114,115.0,234.0
+14,67,nan,Eduardo Polini,115,116.0,235.0
+15,68,nan,Lucas Aloísio,115,117.0,264.0
 16,69,nan,[loopTree] Murilo Oliveira Nascimento,114,116.0,210.0
 17,70,nan,Ruan Pablo Medeiros,113,116.0,165.0
 18,71,nan,Matheus Henrique,112,117.0,234.0
@@ -84,10 +84,10 @@ index,Ranking,Unnamed: 1,Usuário,Resolvido,Tentado,Submissões
 4,83,nan,Bruno Elibio,90,99.0,220.0
 5,84,nan,Ramon Artner,89,90.0,154.0
 6,85,nan,Marlon Henry Schweigert,87,90.0,217.0
-7,86,nan,Antonio Favarin Freire,85,90.0,202.0
-8,87,nan,Paula Campigotto,85,100.0,162.0
-9,88,nan,João Marcelo Xavier,82,82.0,126.0
-10,89,nan,Yuri Henrique,81,81.0,141.0
+7,86,nan,[CINFμ]Yuri Henrique,85,85.0,150.0
+8,87,nan,Antonio Favarin Freire,85,90.0,202.0
+9,88,nan,Paula Campigotto,85,100.0,162.0
+10,89,nan,João Marcelo Xavier,82,82.0,126.0
 11,90,nan,Gustavo Bandeira da Silva,80,82.0,289.0
 12,91,nan,Junior Mocelin,79,84.0,158.0
 13,92,nan,Marcelo Giacomozzi,77,82.0,226.0
@@ -221,35 +221,35 @@ index,Ranking,Unnamed: 1,Usuário,Resolvido,Tentado,Submissões
 11,220,nan,Rafael Ruske,26,26.0,47.0
 12,221,nan,Felipe Duarte de Macedo,26,27.0,62.0
 13,222,nan,ricardo.pfitscher,26,28.0,77.0
-14,223,nan,Makolen Carl Simonini,26,29.0,54.0
-15,224,nan,Adriano Zanella Junior,26,29.0,63.0
-16,225,nan,Jéssica N. Dalla Líbera,26,31.0,65.0
-17,226,nan,mourish,26,33.0,104.0
-18,227,nan,Gustavo Henrique Alvise,25,25.0,47.0
-19,228,nan,Ana Klock,25,25.0,50.0
-20,229,nan,Mateus Hartmann,25,27.0,119.0
-21,230,nan,Laura Bassedone,25,28.0,56.0
-22,231,nan,Christian Radoll,25,29.0,46.0
-23,232,nan,Ricardo Sohn,24,24.0,58.0
-24,233,nan,Matheus Henrique Trindade Ribeiro,24,25.0,32.0
-25,234,nan,Thiago Aleixo de Toledo,24,25.0,86.0
-0,235,nan,Arthur Nicodemus,24,26.0,64.0
-1,236,nan,Vitoria schneider figueiredo,24,27.0,58.0
-2,237,nan,Lucas Matheus Camilo,24,27.0,71.0
-3,238,nan,Pablo Rafaelo Si,24,28.0,50.0
-4,239,nan,Rodrigo Wiggers,24,29.0,91.0
-5,240,nan,Débora de Oliveira,24,29.0,106.0
-6,241,nan,João Henrique Ferreira,24,33.0,132.0
-7,242,nan,William Eger,23,24.0,54.0
-8,243,nan,Jonatan Bardini dos Anjos,23,24.0,68.0
-9,244,nan,kevin jahn,23,28.0,62.0
-10,245,nan,Erivan Sebastião Oliveira Batista Júnior,22,22.0,42.0
-11,246,nan,JuliaeLetícia,22,23.0,40.0
-12,247,nan,Vinícius de Aguiar,22,23.0,137.0
+14,223,nan,Vinícius de Aguiar,26,28.0,142.0
+15,224,nan,Makolen Carl Simonini,26,29.0,54.0
+16,225,nan,Adriano Zanella Junior,26,29.0,63.0
+17,226,nan,Jéssica N. Dalla Líbera,26,31.0,65.0
+18,227,nan,mourish,26,33.0,104.0
+19,228,nan,Gustavo Henrique Alvise,25,25.0,47.0
+20,229,nan,Ana Klock,25,25.0,50.0
+21,230,nan,Mateus Hartmann,25,27.0,119.0
+22,231,nan,Laura Bassedone,25,28.0,56.0
+23,232,nan,Christian Radoll,25,29.0,46.0
+24,233,nan,Ricardo Sohn,24,24.0,58.0
+25,234,nan,Matheus Henrique Trindade Ribeiro,24,25.0,32.0
+0,235,nan,Thiago Aleixo de Toledo,24,25.0,86.0
+1,236,nan,Arthur Nicodemus,24,26.0,64.0
+2,237,nan,Vitoria schneider figueiredo,24,27.0,58.0
+3,238,nan,Lucas Matheus Camilo,24,27.0,71.0
+4,239,nan,Pablo Rafaelo Si,24,28.0,50.0
+5,240,nan,Rodrigo Wiggers,24,29.0,91.0
+6,241,nan,Débora de Oliveira,24,29.0,106.0
+7,242,nan,João Henrique Ferreira,24,33.0,132.0
+8,243,nan,William Eger,23,24.0,54.0
+9,244,nan,Jonatan Bardini dos Anjos,23,24.0,68.0
+10,245,nan,kevin jahn,23,28.0,62.0
+11,246,nan,Erivan Sebastião Oliveira Batista Júnior,22,22.0,42.0
+12,247,nan,JuliaeLetícia,22,23.0,40.0
 13,248,nan,Josue Celeste,22,24.0,51.0
 14,249,nan,Êrica Peters,22,26.0,43.0
 15,250,nan,Gustavo Y. Kita Lopes,22,26.0,52.0
-16,251,nan,Marcelo Schena,22,27.0,61.0
+16,251,nan,Marcelo Schena,22,28.0,65.0
 17,252,nan,Ismael Brustolin,21,21.0,38.0
 18,253,nan,Rodrigo.Renata,21,21.0,38.0
 19,254,nan,Aquela smurf SAFADIS,21,21.0,52.0
